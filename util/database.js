@@ -1,8 +1,8 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 //set the config
-dotenv.config();
+// dotenv.config();
 
 const dataBaseName = 'mernApp';
 let _db;

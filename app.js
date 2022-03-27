@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// const mongoConnect = require('./util/database').mongoConnect;
+const mongoConnect = require('./util/database').mongoConnect;
 
 const express = require('express');
 const app = express();
@@ -20,7 +20,7 @@ app.use('/', (req, res, next) => {
   })
 });
 
-app.listen(port);
-// mongoConnect()
-//   .then(db => {
-//   })
+mongoConnect()
+  .then(db => {
+    app.listen(port);
+  })
