@@ -1,8 +1,21 @@
 const Paper = require('../models/paper');
 
-exports.getPapers = (req, res, next) => {
+const getPapers = (req, res, next) => {
   Paper.getPapers()
     .then(papers => {
       res.json(papers)
     })
 }
+
+exports.postPaper = (req, res, next) => {
+  const currentPaper = new Paper(req.body);
+  currentPaper.save()
+    .then(_=> {
+      Paper.getPapers()
+        .then(papers => {
+          res.json(papers)
+        })
+    })
+}
+
+exports.getPapers = getPapers;
