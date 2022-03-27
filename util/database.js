@@ -10,8 +10,16 @@ let _db;
 const mongodbUri = process.env.MONGODB_URI;
 
 const mongoConnect = (callback) => {
-  callback();
-  
+  MongoClient.connect(`mongodb+srv://Platzi-admin:yBtnRdOIeexra81y@curso-platzi.a3gg8.mongodb.net/${dataBaseName}?retryWrites=true&w=majority`)
+  .then(client => {
+    console.log('Connected ✨');
+    _db = client.db();
+    callback();
+  })
+  .catch(err => {
+    console.log(err, '🍎');
+    throw err;
+  });
 };
 
 const getDb = () => {
