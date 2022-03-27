@@ -24,4 +24,8 @@ app.use('/', (req, res, next) => {
 //   .then(db => {
 //     console.log('🔥🔥🔥🔥🔥🔥')
 //   })
+
+mongoConnect(() => {
   app.listen(port);
+})
+  

@@ -9,15 +9,17 @@ let _db;
 
 const mongodbUri = process.env.MONGODB_URI;
 
-const mongoConnect = async (callback) => {
-  try {
-    const client = await MongoClient.connect(`${mongodbUri}${dataBaseName}?retryWrites=true&w=majority`);
+const mongoConnect = (callback) => {
+  MongoClient.connect(`${mongodbUri}${dataBaseName}?retryWrites=true&w=majority`)
+  .then(client => {
     console.log('Connected ✨');
     _db = client.db();
-  } catch (error) {
-    console.log(error, '🍎');
-    throw error;
-  }
+    callback();
+  })
+  .catch(err => {
+    console.log(err, '🍎');
+    throw err;
+  });
 };
 
 const getDb = () => {
