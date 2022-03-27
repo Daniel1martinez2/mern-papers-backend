@@ -1,8 +1,8 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 //set the config
-dotenv.config();
+// dotenv.config();
 
 const dataBaseName = 'mernApp';
 let _db;
@@ -10,16 +10,8 @@ let _db;
 const mongodbUri = process.env.MONGODB_URI;
 
 const mongoConnect = (callback) => {
-  MongoClient.connect(`${mongodbUri}${dataBaseName}?retryWrites=true&w=majority`)
-  .then(client => {
-    console.log('Connected ✨');
-    _db = client.db();
-    callback();
-  })
-  .catch(err => {
-    console.log(err, '🍎');
-    throw err;
-  });
+  callback();
+  
 };
 
 const getDb = () => {
