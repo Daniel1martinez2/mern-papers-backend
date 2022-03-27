@@ -14,6 +14,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/papers', papersRoutes);
+app.use('/', (req, res, next) => {
+  res.json({
+    message: 'holi'
+  })
+});
 
 mongoConnect()
   .then(db => {
