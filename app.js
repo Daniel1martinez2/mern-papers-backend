@@ -20,7 +20,7 @@ app.use('/', (req, res, next) => {
   })
 });
 
-// mongoConnect()
-//   .then(db => {
-//   })
-  app.listen(port);
+mongoConnect()
+  .then(db => {
+    app.listen(port);
+  })
