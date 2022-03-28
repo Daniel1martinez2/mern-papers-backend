@@ -14,6 +14,13 @@ class Paper{
     return db.collection('papers').find({}).toArray();
   }
 
+  static deletePaperById = (id) => {
+    const db = getDb();
+    return db
+      .collection('papers')
+      .deleteOne({_id: new mongodb.ObjectId(id)})
+  }
+
   save(){
     const db = getDb();
     let dbOperation;

@@ -18,4 +18,15 @@ exports.postPaper = (req, res, next) => {
     })
 }
 
+exports.postDeletePaper = (req, res, next) => {
+  const paperId = req.body.id;
+  Paper.deletePaperById(paperId)
+    .then(_ => {
+      Paper.getPapers()
+        .then(papers => {
+          res.json(papers)
+        })
+    })
+}
+
 exports.getPapers = getPapers;

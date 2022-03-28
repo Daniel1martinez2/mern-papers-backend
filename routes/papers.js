@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get('/', papersController.getPapers);
 router.post('/', papersController.postPaper);
+router.post('/delete', papersController.postDeletePaper);
 
 module.exports = router; 
