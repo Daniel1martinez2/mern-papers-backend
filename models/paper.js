@@ -2,10 +2,11 @@ const mongodb = require('mongodb')
 const getDb = require('../util/database').getDb;
 
 class Paper{
-  constructor({name, description, tags, id}){
+  constructor({name, description, tags, link,  id}){
     this.name = name;
     this.description = description;
     this.tags = tags;
+    this.link = link;
     this._id = id ? new mongodb.ObjectId(id) : null;
   }
 
